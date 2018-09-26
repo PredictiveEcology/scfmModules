@@ -6,7 +6,7 @@ defineModule(sim, list(
   keywords=c("fire regime", "BEACONs"),
   authors=c(person(c("Steven", "G."), "Cumming", email="stevec@sbf.ulaval.ca", role=c("aut", "cre"))),
   childModules=character(),
-  version=numeric_version("0.1.0"),
+  version=numeric_version("0.1.1"),
   spatialExtent=raster::extent(rep(NA_real_, 4)),
   timeframe=as.POSIXlt(c(NA, NA)),
   timeunit="year",
@@ -114,7 +114,8 @@ Init <- function(sim) {
     stop("No studyArea provided")
   
   if (!suppliedElsewhere("firePointsDB", sim)) {# ADDED TATI, modified by Eliot July 23, 2018 
-    sim$firePointsDB <- prepInputs(url = "http://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_pnt/current_version/NFDB_point.zip", 
+    sim$firePointsDB <- prepInputs(targetFile = "NFDB_point_20171106.shp", 
+                                   url = "http://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_pnt/current_version/NFDB_point.zip", 
                                    destinationPath = dataPath(sim)) 
   }
   
